@@ -3,7 +3,7 @@
  * Plugin Name:			Ocean Extra
  * Plugin URI:			https://oceanwp.org/extension/ocean-extra/
  * Description:			Add extra features like widgets, metaboxes, import/export and a panel to activate the premium extensions.
- * Version:				1.5.15
+ * Version:				1.5.16
  * Author:				OceanWP
  * Author URI:			https://oceanwp.org/
  * Requires at least:	4.5.0
@@ -597,7 +597,7 @@ add_action( 'owp_fs_loaded', 'owp_include_client_migration' );
 
 function owp_fs_is_submenu_visible( $is_visible, $submenu_id ) {
 	if ( 'pricing' === $submenu_id ) {
-		$show_pricing_transient = get_transient( 'oceanwp_show_pricing' );
+		$show_pricing_transient = false; //get_transient( 'oceanwp_show_pricing' );
 
 		if ( is_string( $show_pricing_transient ) ) {
 			$show_pricing = ( 'yes' === $show_pricing_transient );
@@ -632,11 +632,11 @@ function owp_fs_is_submenu_visible( $is_visible, $submenu_id ) {
 				}
 			}
 
-			set_transient(
-				'oceanwp_show_pricing',
-				$show_pricing ? 'yes' : 'no',
-				WP_FS__TIME_24_HOURS_IN_SEC
-			);
+//			set_transient(
+//				'oceanwp_show_pricing',
+//				$show_pricing ? 'yes' : 'no',
+//				WP_FS__TIME_5_MIN_IN_SEC
+//			);
 		}
 
 		return $show_pricing;
